@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>FLAMES Calculator</h1>
+        <form method="post">
+            <input type="text" name="player1" placeholder="Player 1 name" required>
+            <input type="text" name="player2" placeholder="Player 2 name" required>
+            <input type="submit" value="Calculate">
+        </form>
+        {% if result %}
+            <div class="result" id="result" style="display:none;">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the result element exists and has content
+            var resultElement = document.getElementById('result');
+            if (resultElement && resultElement.textContent.trim()) {
+                var resultText = resultElement.textContent.trim();
+                showAlert(resultText);
+            }
+        });
+    
+        function showAlert(text) {
+            alert('FLAMES Result: ' + text);
+        }
+    </script>
+    
+    
+</body>
+</html>
